@@ -31,6 +31,11 @@ require_once __DIR__ . '/inc/class-gp-translation-propagation.php';
 
 add_action( 'gp_init', 'gptp_init' );
 
+/**
+ * Initializes the plugin.
+ *
+ * @since 1.0.0
+ */
 function gptp_init() {
 	$gptp = new GP_Translation_Propagation();
 	$gptp->register_events();
@@ -40,6 +45,11 @@ function gptp_init() {
 	}
 }
 
+/**
+ * Registers CLI commands.
+ *
+ * @since 1.0.0
+ */
 function gptp_register_cli_commands() {
 	require_once __DIR__ . '/inc/cli/import-originals.php';
 

@@ -1,5 +1,17 @@
 <?php
+/**
+ * Translation Propagation: GP_CLI_Import_Originals_With_Propagation class
+ *
+ * @package GlotPress
+ * @subpackage Translation_Propagation_CLI
+ * @since 1.0.0
+ */
 
+/**
+ * Core class used to override the default import command.
+ *
+ * @since 1.0.0
+ */
 class GP_CLI_Import_Originals_With_Propagation extends GP_CLI_Import_Originals {
 
 	/**
@@ -21,6 +33,9 @@ class GP_CLI_Import_Originals_With_Propagation extends GP_CLI_Import_Originals {
 	 *
 	 * [--disable-matching]
 	 * : If set, matching will be disabled.
+	 *
+	 * @param array $args       Arguments passed to the command.
+	 * @param array $assoc_args Parameters passed to the command.
 	 */
 	public function __invoke( $args, $assoc_args ) {
 		$disable_propagating = isset( $assoc_args['disable-propagating'] );
