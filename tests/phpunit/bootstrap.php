@@ -31,3 +31,4 @@ $wp_tests_options['permalink_structure'] = '/%postname%';
 require getenv( 'WP_TESTS_DIR' ) . '/includes/bootstrap.php';
 
 require GP_TESTS_DIR . '/lib/testcase.php';
+require GP_TESTS_DIR . '/lib/testcase-route.php';
