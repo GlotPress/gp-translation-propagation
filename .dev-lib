@@ -1,0 +1,9 @@
+#!/bin/bash
+
+function after_wp_install {
+	echo "Loading GlotPress..."
+	# Get GlotPress without any version control files.
+	svn export -q https://github.com/glotpress/glotpress-wp/trunk "$WP_CORE_DIR/src/wp-content/plugins/glotpress"
+	GP_TESTS_DIR="$WP_CORE_DIR/src/wp-content/plugins/glotpress/tests/phpunit"
+	export GP_TESTS_DIR
+}

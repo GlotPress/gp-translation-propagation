@@ -15,6 +15,26 @@
 class GP_Translation_Propagation {
 
 	/**
+	 * Holds the reference to an instance of this class.
+	 *
+	 * @var GP_Translation_Propagation
+	 */
+	private static $instance;
+
+	/**
+	 * Returns the GP_Translation_Propagation instance of this class.
+	 *
+	 * @return GP_Translation_Propagation The GP_Translation_Propagation instance.
+	 */
+	public static function get_instance() {
+		if ( null === static::$instance ) {
+			static::$instance = new static();
+		}
+
+		return static::$instance;
+	}
+
+	/**
 	 * Registers callbacks for GlotPress actions.
 	 *
 	 * @since 1.0.0
@@ -22,7 +42,7 @@ class GP_Translation_Propagation {
 	public function register_events() {
 		add_action( 'gp_original_created', array( $this, 'add_translations_from_other_projects' ) );
 		add_action( 'gp_translation_created', array( $this, 'propagate_translation_across_projects' ) );
-		add_action( 'gp_translation_updated', array( $this, 'propagate_translation_across_projects' ) );
+		add_action( 'gp_translation_saved', array( $this, 'propagate_translation_across_projects' ) );
 	}
 
 	/**
@@ -116,7 +136,7 @@ class GP_Translation_Propagation {
 	 * @param string         $status                 The status of the new translation.
 	 * @return bool False on failure, true on success.
 	 */
-	private function copy_translation_into_set( $translation, $new_translation_set_id, $new_original_id, $status = 'fuzzy' ) {
+	public function copy_translation_into_set( $translation, $new_translation_set_id, $new_original_id, $status = 'fuzzy' ) {
 		if ( ! in_array( $status, GP::$translation->get_static( 'statuses' ), true ) ) {
 			return false;
 		}
@@ -281,4 +301,19 @@ class GP_Translation_Propagation {
 
 		return true;
 	}
+
+	/**
+	 * Protected constructor to prevent creating a new instance.
+	 */
+	protected function __construct() {}
+
+	/**
+	 * Private clone method to prevent cloning of the instance.
+	 */
+	private function __clone() {}
+
+	/**
+	 * Private unserialize method to prevent unserializing of the instance.
+	 */
+	private function __wakeup() {}
 }

@@ -37,8 +37,8 @@ add_action( 'gp_init', 'gptp_init' );
  * @since 1.0.0
  */
 function gptp_init() {
-	$gptp = new GP_Translation_Propagation();
-	$gptp->register_events();
+	$translation_propagation = GP_Translation_Propagation::get_instance();
+	$translation_propagation->register_events();
 
 	if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		gptp_register_cli_commands();
