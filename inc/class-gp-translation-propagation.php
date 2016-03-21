@@ -42,7 +42,7 @@ class GP_Translation_Propagation {
 	public function register_events() {
 		add_action( 'gp_original_created', array( $this, 'add_translations_from_other_projects' ) );
 		add_action( 'gp_translation_created', array( $this, 'propagate_translation_across_projects' ) );
-		add_action( 'gp_translation_updated', array( $this, 'propagate_translation_across_projects' ) );
+		add_action( 'gp_translation_saved', array( $this, 'propagate_translation_across_projects' ) );
 	}
 
 	/**
