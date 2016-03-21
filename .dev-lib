@@ -1,0 +1,5 @@
+#!/bin/bash
+
+function after_wp_install {
+	echo $WP_CORE_DIR;
+}
