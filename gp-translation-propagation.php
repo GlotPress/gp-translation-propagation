@@ -52,6 +52,8 @@ function gptp_init() {
  */
 function gptp_register_cli_commands() {
 	require_once __DIR__ . '/inc/cli/import-originals.php';
+	require_once __DIR__ . '/inc/cli/translation-set.php';
 
 	WP_CLI::add_command( 'glotpress import-originals', 'GP_CLI_Import_Originals_With_Propagation' );
+	WP_CLI::add_command( 'glotpress translation-set', 'GP_CLI_Translation_Set_With_Propagation' );
 }
