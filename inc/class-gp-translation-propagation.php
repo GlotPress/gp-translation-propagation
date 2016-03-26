@@ -257,7 +257,7 @@ class GP_Translation_Propagation {
 			return false;
 		}
 
-		// Only propagte current translations without warnings.
+		// Only propagate current translations without warnings.
 		if ( 'current' !== $translation->status || ! empty( $translation->warnings ) ) {
 			return false;
 		}
