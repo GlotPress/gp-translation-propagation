@@ -207,7 +207,11 @@ class GP_Translation_Propagation {
 		$copy->translation_set_id = $new_translation_set_id;
 		$copy->status = $status;
 
+		// Avoid recursion.
+		add_filter( 'gp_enable_propagate_translations_across_projects', '__return_false' );
 		GP::$translation->create( $copy );
+		remove_filter( 'gp_enable_propagate_translations_across_projects', '__return_false' );
+
 		// Flush cache, create() doesn't flush caches for copies, see r994.
 		gp_clean_translation_set_cache( $new_translation_set_id );
 
